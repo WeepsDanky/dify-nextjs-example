@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Introduction
+This is a Next.js app bootrstrapped from ```npx create-next-app@latest```. It is used as a example demonstrating how to make Dify API calls in Next.js calls.  
 
 ## Getting Started
 
