@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
   try {
     const { data } = await axios.post(`${BASE_URL}/workflows/run`, {
-      inputs: { input_url: requestData.text },
+      inputs: { input_text: requestData.text },
       response_mode: 'blocking',
       user: 'test-user'
     }, {
@@ -18,9 +18,10 @@ export async function POST(request: Request) {
         'Content-Type': 'application/json', 
         'Authorization': `Bearer ${DIFY_API_KEY}`
       }
+
     });
 
-  return NextResponse.json(data);
+  return NextResponse.json(data.data.outputs, { status: 200 });
 
   } catch (error: any) {
     console.error('Error running workflow:', error)

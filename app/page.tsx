@@ -1,10 +1,12 @@
 'use client'; 
 
 import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea"; 
 
 export default function Home() {
   const [summary, setSummary] = useState(null);
   const [emailStatus, setEmailStatus] = useState(null);
+  const [inputValue, setInputValue] = useState('');
 
   const fetchSummary = async () => {
     const response = await fetch('/api/summary', {
@@ -12,7 +14,7 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ /* summary data */ }),
+      body: JSON.stringify({ text: inputValue }),
     });
   
     try {
@@ -29,7 +31,7 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ /* email data */ }),
+      body: JSON.stringify({ input_text: inputValue }),
     });
 
     try{ 
@@ -56,8 +58,15 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <div className="flex flex-col items-center space-y-2 mt-5 w-full max-w-5xl">
+        <Textarea
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Enter text to be summarized here..."
+        />
+      </div>
       <div className="flex flex-col items-center space-y-2 mt-5">
-      {summary && <div className="text-yellow-500">{JSON.stringify(summary)}</div>}
+        {summary && <div className="text-blue-500">{JSON.stringify(summary)}</div>}
         {emailStatus && <div className="text-green-500">{JSON.stringify(emailStatus)}</div>}
       </div>
     </main>
