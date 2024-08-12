@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
 
-const DIFY_API_KEY = process.env.DIFY_API_KEY_EMAIL; // Ensure you have this in your environment variables
+const DIFY_API_KEY = process.env.DIFY_API_KEY_EMAIL; 
 const BASE_URL = 'https://api.dify.ai/v1';
 
 export async function POST(request: Request) {
