@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       }
     });
 
-    return NextResponse.json(data);
+    return NextResponse.json(data.data.outputs, { status: 200 });
 
   } catch (error: any) {
     console.error('Error running workflow:', error);

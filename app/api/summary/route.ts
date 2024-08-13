@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
   try {
     const { data } = await axios.post(`${BASE_URL}/workflows/run`, {
-      inputs: { input_text: requestData.text },
+      inputs: {},
       response_mode: 'blocking',
       user: 'test-user'
     }, {
